@@ -1,13 +1,11 @@
+
+
 <!DOCTYPE html>
 <html>
 <head><meta charset="utf-8" />
 
+
 <title>devantamot-cmsc320-final-project</title>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-
-
 
 <style type="text/css">
     /*!
@@ -13072,20 +13070,17 @@ div#notebook {
   div.cell {
     display: block;
     page-break-inside: avoid;
-  } 
-  div.output_wrapper { 
-    display: block;
-    page-break-inside: avoid; 
   }
-  div.output { 
+  div.output_wrapper {
     display: block;
-    page-break-inside: avoid; 
+    page-break-inside: avoid;
+  }
+  div.output {
+    display: block;
+    page-break-inside: avoid;
   }
 }
 </style>
-
-<!-- Custom stylesheet, it must be in the same directory as the html file -->
-<link rel="stylesheet" href="custom.css">
 
 <!-- Loading mathjax macro -->
 <!-- Load mathjax -->
@@ -13108,90 +13103,129 @@ div#notebook {
         }
     });
     </script>
-    <!-- End of mathjax configuration --></head>
+    <!-- End of mathjax configuration -->
+
+<style>
+        .cell.nbinteract-left {
+            width: 50%;
+            float: left;
+        }
+
+        .cell.nbinteract-right {
+            width: 50%;
+            float: right;
+        }
+
+        .cell.nbinteract-hide_in > .input {
+            display: none;
+        }
+
+        .cell.nbinteract-hide_out > .output_wrapper {
+            display: none;
+        }
+
+        .cell:after {
+          content: "";
+          display: table;
+          clear: both;
+        }
+
+        div.output_subarea {
+            max-width: initial;
+        }
+
+        .jp-OutputPrompt {
+            display: none;
+        }
+    </style></head>
 <body>
   <div tabindex="-1" id="notebook" class="border-box-sizing">
-    <div class="container" id="notebook-container">
+    <div class="container">
+      
 
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+
+
+  <div class="cell text_cell">
+    <button class="js-nbinteract-widget">
+      Loading widgets...
+    </button>
+  </div>
+
+
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><img src="img/pokeCollage.png?raw=true" alt="Image"></p>
 
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <center> <h1>Finding the Best Pokemon Team Composition</h1> </center>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <center> <b>An Inspirational CMSC320 Project by Devan Tamot</b></center>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <hr>
 
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <center> <h2> Introduction </h2> </center>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Hello there! It's so very nice to meet you! Welcome to the world of Pokemon! My name is Devan Tamot, however everyone just calls me the Pokemon Professor. This world is widely inhabited by creatures known as Pokemon. We Humans live alongside Pokemon as friends. At times we play together, and at other times we work together. Some people use their Pokemon to battle and develop closer bonds with them. What do I do? I conduct data science research so we learn more about Pokemon and how to best utilize their strengths and weaknesses.</p>
 
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>As an well established Pokemon Professor who happens to be a Computer Science genius, I wanted to make this project about finding the optimal team given various senarios such as a set of pokemon to battle, a set of elements, etc. When first playing a Pokemon game, it can be quite overwhelming at first because so much information is being thrown at you. My hopes is that this notebook will help anyone who is looking for the most optimal team so they can become a Pokemon Master!</p>
 
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>This project does not consider movesets that act as buffs for pokemon (aka moves that enable special stats like a power up, defense up, etc..)</p>
 
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <center> <h2> Getting Started with the Data </h2> </center>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>I used Python3 and the following libraries: <a href="https://2.python-requests.org/en/master/">requests</a>, <a href="https://docs.python.org/2/library/io.html">io</a>, <a href="https://pandas.pydata.org/">pandas</a>, <a href="https://docs.python.org/2/library/pprint.html">pprint</a>, <a href="https://graphviz.readthedocs.io/en/stable/api.html">graphviz</a></p>
 
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[1]:</div>
+
+  
+
+  <div class="
+      cell border-box-sizing code_cell rendered">
+    <div class="input">
+
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># These are the nessessary initalization imports needed</span>
@@ -13220,18 +13254,21 @@ div#notebook {
 </div>
 </div>
 
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+  </div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>The data set I will be using is a RESTful API called the <a href="https://pokeapi.co/">PokeApi</a> which contains JSON data about all things Pokemon.</p>
 
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[2]:</div>
+
+  
+
+  <div class="
+      cell border-box-sizing code_cell rendered">
+    <div class="input">
+
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">j</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;https://pokeapi.co/api/v2/pokemon/&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
@@ -13242,33 +13279,34 @@ div#notebook {
 </div>
 </div>
 
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+  </div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3> Elemental Dependency Digraph </h3>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>In order to effectively calculate the most effective team, we need some sort of data structure to maintain the relationships between the elemental types. An edge connection from one node to another means that the starting elemental type is super effective against the ending elemental node. One way to represent this is as a Weighted Digraph as such: <img src="img/typeChart.jpg?raw=true" alt="Image"></p>
 
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Lucky for me, PokeApi has infomation regarding the elemental types so creating the weighted digraph is no issue. If no mapping exists between one element to another, then it is assumed the damage factor is 1.</p>
 
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[3]:</div>
+
+  
+
+  <div class="
+      cell border-box-sizing code_cell rendered">
+    <div class="input">
+
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">wed</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span> <span class="c1"># Weighted Elemental Digraph </span>
@@ -13312,18 +13350,21 @@ div#notebook {
 </div>
 </div>
 
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+  </div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Just to prove that the digraph just created produced the proper digraph, here is a graph visualization down below.</p>
 
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[4]:</div>
+
+  
+
+  <div class="
+      cell border-box-sizing code_cell rendered">
+    <div class="input">
+
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">dom_graph</span> <span class="o">=</span> <span class="n">Digraph</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;dom-graph&#39;</span><span class="p">,</span><span class="n">strict</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">graph_attr</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;fontsize&#39;</span><span class="p">:</span><span class="s1">&#39;30pt&#39;</span><span class="p">})</span>
@@ -13349,8 +13390,7 @@ div#notebook {
 
 <div class="output_area">
 
-    <div class="prompt"></div>
-
+    
 
 
 
@@ -13367,40 +13407,40 @@ height=700pt
 </div>
 </div>
 
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+  </div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3>Precomputation of Data</h3>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>In order to prevent continually looking up pokemon data when we need it, I decided to precompute the data by populating a python dictonary with the nessessary information needed.</p>
 
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3>Attack Move Data</h3>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>The first step in finding the best pokemon team is to the gather information about each move. This includes its name, elemental type, and power.</p>
 
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[5]:</div>
+
+  
+
+  <div class="
+      cell border-box-sizing code_cell rendered">
+    <div class="input">
+
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Precompuation of the moves from the API is nessessary to avoid having to make</span>
@@ -13433,8 +13473,7 @@ height=700pt
 
 <div class="output_area">
 
-    <div class="prompt"></div>
-
+    
 
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Loading all Move Data ... 
@@ -13444,30 +13483,21 @@ height=700pt
 
 <div class="output_area">
 
-    <div class="prompt"></div>
+    
 
 
 
-
-
- 
- 
-<div id="658e51a1-01c5-4154-ae9f-5bdd976f43c3"></div>
-<div class="output_subarea output_widget_view ">
-<script type="text/javascript">
-var element = $('#658e51a1-01c5-4154-ae9f-5bdd976f43c3');
-</script>
-<script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "4c6b1d9f22b04aaf924486e275b982bb", "version_major": 2, "version_minor": 0}
-</script>
-</div>
+  <div class="output_subarea output_widget_view ">
+    <button class="js-nbinteract-widget">
+      Loading widgets...
+    </button>
+  </div>
 
 </div>
 
 <div class="output_area">
 
-    <div class="prompt"></div>
-
+    
 
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Loaded 746 Moves!
@@ -13478,16 +13508,14 @@ var element = $('#658e51a1-01c5-4154-ae9f-5bdd976f43c3');
 </div>
 </div>
 
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+  </div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3>Pokemon Data</h3>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><h4>Legendary Pokemon</h4>
 These pokemon are considered legendary according to the Pokemon Lore. For most pokemon battle competitions, the use of Legendary pokemon is banned. Therefore, I offer the option to filter out lengendary pokemon for finding an optimal team.</p>
@@ -13499,9 +13527,13 @@ As before with the move dictionary, I front load all the GET requests a head of 
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[6]:</div>
+
+  
+
+  <div class="
+      cell border-box-sizing code_cell rendered">
+    <div class="input">
+
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Maintains a list of all legendary Pokemon IDs</span>
@@ -13576,8 +13608,7 @@ As before with the move dictionary, I front load all the GET requests a head of 
 
 <div class="output_area">
 
-    <div class="prompt"></div>
-
+    
 
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Loading all Pokemon Data ...
@@ -13587,30 +13618,21 @@ As before with the move dictionary, I front load all the GET requests a head of 
 
 <div class="output_area">
 
-    <div class="prompt"></div>
+    
 
 
 
-
-
- 
- 
-<div id="e4583d9d-d1eb-4b17-b430-d060f396c72a"></div>
-<div class="output_subarea output_widget_view ">
-<script type="text/javascript">
-var element = $('#e4583d9d-d1eb-4b17-b430-d060f396c72a');
-</script>
-<script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "4e12a60f89b34a28bf993e83052d4a90", "version_major": 2, "version_minor": 0}
-</script>
-</div>
+  <div class="output_subarea output_widget_view ">
+    <button class="js-nbinteract-widget">
+      Loading widgets...
+    </button>
+  </div>
 
 </div>
 
 <div class="output_area">
 
-    <div class="prompt"></div>
-
+    
 
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Loaded 807 Pokemon!
@@ -13621,17 +13643,15 @@ var element = $('#e4583d9d-d1eb-4b17-b430-d060f396c72a');
 </div>
 </div>
 
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+  </div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><center> <h2> Exploratory Data Analysis </h2> <center></p>
 
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><h3>Elemental Type Background</h3>
 Pokemon have various different types and each type has it's strengths and weaknesses. The image below on the left shows the different elemental types and the arrows from each type indicate which other type it is most effective against in battle. Pokemon are known to have up to two types.</p>
@@ -13639,8 +13659,7 @@ Pokemon have various different types and each type has it's strengths and weakne
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <table>
 <thead><tr>
@@ -13659,16 +13678,14 @@ Pokemon have various different types and each type has it's strengths and weakne
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>When Pokemon are in battle, the attacking Pokemon can choose an attack from a moveset of 4 different attacks. These attacks do not nessessiarily have to be the same type of the pokemon, they can be different types. When an attack is executed on a defending Pokemon, the amount of damage done to the defending Pokemon depends on the elemental type of the attack and the elemental type of the defending Pokemon.</p>
 
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>With these elemental strengths known, we can actually look up the weighted effectiveness of each elemental moveset against the others. The image below shows the elemental relationships:</p>
 <p><img src="img/typeMatrix.jpg?raw=true" alt="Image"></p>
@@ -13677,8 +13694,7 @@ Pokemon have various different types and each type has it's strengths and weakne
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3>Algorithms</h3><h4><u>getSortedElList()</u></h4><blockquote><p><b>Parameters:</b></p>
 <blockquote><p><strong>elList</strong>: a list of elements that need to be countered <br>
@@ -13744,9 +13760,13 @@ Pokemon have various different types and each type has it's strengths and weakne
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[7]:</div>
+
+  
+
+  <div class="
+      cell border-box-sizing code_cell rendered">
+    <div class="input">
+
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">legendaryIDList</span> <span class="o">=</span> <span class="p">[</span><span class="mi">144</span><span class="p">,</span> <span class="mi">145</span><span class="p">,</span> <span class="mi">146</span><span class="p">,</span> <span class="mi">150</span><span class="p">,</span> <span class="mi">151</span><span class="p">,</span> <span class="mi">243</span><span class="p">,</span> <span class="mi">244</span><span class="p">,</span> <span class="mi">245</span><span class="p">,</span> <span class="mi">249</span><span class="p">,</span> <span class="mi">250</span><span class="p">,</span> 
@@ -13873,9 +13893,8 @@ Pokemon have various different types and each type has it's strengths and weakne
 </div>
 </div>
 
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+  </div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Using the functions from above, we can break it down into these simple steps:</p>
 <ol>
@@ -13887,9 +13906,13 @@ Pokemon have various different types and each type has it's strengths and weakne
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[8]:</div>
+
+  
+
+  <div class="
+      cell border-box-sizing code_cell rendered">
+    <div class="input">
+
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">elList</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;normal&#39;</span><span class="p">,</span><span class="s1">&#39;fighting&#39;</span><span class="p">,</span><span class="s1">&#39;flying&#39;</span><span class="p">,</span><span class="s1">&#39;poison&#39;</span><span class="p">,</span><span class="s1">&#39;ground&#39;</span><span class="p">,</span><span class="s1">&#39;rock&#39;</span><span class="p">,</span><span class="s1">&#39;bug&#39;</span><span class="p">,</span><span class="s1">&#39;ghost&#39;</span><span class="p">,</span><span class="s1">&#39;steel&#39;</span><span class="p">,</span>
@@ -13920,8 +13943,7 @@ Pokemon have various different types and each type has it's strengths and weakne
 
 <div class="output_area">
 
-    <div class="prompt"></div>
-
+    
 
 
 
@@ -13935,8 +13957,7 @@ Pokemon have various different types and each type has it's strengths and weakne
 
 <div class="output_area">
 
-    <div class="prompt"></div>
-
+    
 
 
 
@@ -13951,18 +13972,21 @@ Pokemon have various different types and each type has it's strengths and weakne
 </div>
 </div>
 
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+  </div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>The Graphs below demonstrates the same as above except Pokemon are allowed to have the same move sets as one another</p>
 
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[9]:</div>
+
+  
+
+  <div class="
+      cell border-box-sizing code_cell rendered">
+    <div class="input">
+
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">P</span> <span class="o">=</span> <span class="n">getSortedElList</span><span class="p">(</span><span class="n">elList</span><span class="p">,</span><span class="n">noLegend</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -13990,8 +14014,7 @@ Pokemon have various different types and each type has it's strengths and weakne
 
 <div class="output_area">
 
-    <div class="prompt"></div>
-
+    
 
 
 
@@ -14005,8 +14028,7 @@ Pokemon have various different types and each type has it's strengths and weakne
 
 <div class="output_area">
 
-    <div class="prompt"></div>
-
+    
 
 
 
@@ -14021,18 +14043,21 @@ Pokemon have various different types and each type has it's strengths and weakne
 </div>
 </div>
 
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+  </div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Just for fun, I created a custom team selector that allows you to pick any team of pokemon and find the optimal moveset for that team.</p>
 
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[10]:</div>
+
+  
+
+  <div class="
+      cell border-box-sizing code_cell rendered">
+    <div class="input">
+
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">current_display</span> <span class="o">=</span> <span class="kc">False</span>
@@ -14101,113 +14126,78 @@ Pokemon have various different types and each type has it's strengths and weakne
 
 <div class="output_area">
 
-    <div class="prompt"></div>
+    
 
 
 
-
-
- 
- 
-<div id="eb1352c4-f3f2-4d77-b34d-e2e3d3c32819"></div>
-<div class="output_subarea output_widget_view ">
-<script type="text/javascript">
-var element = $('#eb1352c4-f3f2-4d77-b34d-e2e3d3c32819');
-</script>
-<script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "7da8e073397a4e1481e6927395efaf30", "version_major": 2, "version_minor": 0}
-</script>
-</div>
+  <div class="output_subarea output_widget_view ">
+    <button class="js-nbinteract-widget">
+      Loading widgets...
+    </button>
+  </div>
 
 </div>
 
 <div class="output_area">
 
-    <div class="prompt"></div>
+    
 
 
 
-
-
- 
- 
-<div id="bfcfa16f-5160-4eea-8125-764e0ff68369"></div>
-<div class="output_subarea output_widget_view ">
-<script type="text/javascript">
-var element = $('#bfcfa16f-5160-4eea-8125-764e0ff68369');
-</script>
-<script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "dcbd5b4497ee4f98b225bdc86655b7cc", "version_major": 2, "version_minor": 0}
-</script>
-</div>
+  <div class="output_subarea output_widget_view ">
+    <button class="js-nbinteract-widget">
+      Loading widgets...
+    </button>
+  </div>
 
 </div>
 
 <div class="output_area">
 
-    <div class="prompt"></div>
+    
 
 
 
-
-
- 
- 
-<div id="adde19a4-8895-4597-9b2a-35ed3ea8f619"></div>
-<div class="output_subarea output_widget_view ">
-<script type="text/javascript">
-var element = $('#adde19a4-8895-4597-9b2a-35ed3ea8f619');
-</script>
-<script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "e3c3f60fe2cd412cb702ec2e1a4d6655", "version_major": 2, "version_minor": 0}
-</script>
-</div>
+  <div class="output_subarea output_widget_view ">
+    <button class="js-nbinteract-widget">
+      Loading widgets...
+    </button>
+  </div>
 
 </div>
 
 <div class="output_area">
 
-    <div class="prompt"></div>
+    
 
 
 
-
-
- 
- 
-<div id="442a0cf8-f7c2-4e4b-8a4d-c043034ddb67"></div>
-<div class="output_subarea output_widget_view ">
-<script type="text/javascript">
-var element = $('#442a0cf8-f7c2-4e4b-8a4d-c043034ddb67');
-</script>
-<script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "9ec9a247898f4fbeaf01302deed333e9", "version_major": 2, "version_minor": 0}
-</script>
-</div>
+  <div class="output_subarea output_widget_view ">
+    <button class="js-nbinteract-widget">
+      Loading widgets...
+    </button>
+  </div>
 
 </div>
 
 </div>
 </div>
 
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+  </div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Now that we have some form of visual representation, lets dive into win percentages of pokemon and see statisics says about our team composition.</p>
 
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2> <center> Getting back into the Data </center> </h2>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>To figure out win percentages, I use some data that I found <a href="https://www.kaggle.com/mmetter/pokemon-data-analysis-tutorial/data">online</a>. Unfortunetly, the Pokemon data does not align exactly to the offical pokedex, so I had to use theirs to maintain consistency.</p>
 <p>The battle data information was crafted from a battle algorithm that ran simulations for battles.</p>
@@ -14215,9 +14205,13 @@ var element = $('#442a0cf8-f7c2-4e4b-8a4d-c043034ddb67');
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[11]:</div>
+
+  
+
+  <div class="
+      cell border-box-sizing code_cell rendered">
+    <div class="input">
+
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">combat</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;combats.csv&quot;</span><span class="p">)</span>
@@ -14240,8 +14234,7 @@ var element = $('#442a0cf8-f7c2-4e4b-8a4d-c043034ddb67');
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[11]:</div>
-
+    
 
 
 <div class="output_html rendered_html output_subarea output_execute_result">
@@ -14369,18 +14362,21 @@ var element = $('#442a0cf8-f7c2-4e4b-8a4d-c043034ddb67');
 </div>
 </div>
 
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+  </div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Now to calculate win percentages for each Pokemon.</p>
 
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[12]:</div>
+
+  
+
+  <div class="
+      cell border-box-sizing code_cell rendered">
+    <div class="input">
+
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># This will calculate the win percentages of each pokemon and add it to the data set</span>
@@ -14409,8 +14405,7 @@ var element = $('#442a0cf8-f7c2-4e4b-8a4d-c043034ddb67');
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[12]:</div>
-
+    
 
 
 <div class="output_html rendered_html output_subarea output_execute_result">
@@ -14562,18 +14557,21 @@ var element = $('#442a0cf8-f7c2-4e4b-8a4d-c043034ddb67');
 </div>
 </div>
 
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+  </div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>We can actually see the win percentages per elemental type.</p>
 
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[13]:</div>
+
+  
+
+  <div class="
+      cell border-box-sizing code_cell rendered">
+    <div class="input">
+
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">grouped</span> <span class="o">=</span> <span class="n">pokeDF</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;Type 1&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">agg</span><span class="p">({</span><span class="s2">&quot;Win Percentage&quot;</span><span class="p">:</span> <span class="s2">&quot;mean&quot;</span><span class="p">})</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span> <span class="o">=</span> <span class="s2">&quot;Win Percentage&quot;</span><span class="p">)</span>
@@ -14590,8 +14588,7 @@ var element = $('#442a0cf8-f7c2-4e4b-8a4d-c043034ddb67');
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[13]:</div>
-
+    
 
 
 <div class="output_html rendered_html output_subarea output_execute_result">
@@ -14703,33 +14700,34 @@ var element = $('#442a0cf8-f7c2-4e4b-8a4d-c043034ddb67');
 </div>
 </div>
 
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+  </div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2> <center> Data Analysis and Linear Regression Modeling </center> </h2>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Now that we have a visual way of seeing how a team will match up against the different elemental types, lets see which other factors will help a Pokemon team win a battle.</p>
 
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>To make things interesting, lets call back onto our elemental digraph to see correlation between win percentage and elemental advantage.</p>
 
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[14]:</div>
+
+  
+
+  <div class="
+      cell border-box-sizing code_cell rendered">
+    <div class="input">
+
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">new_dict</span> <span class="o">=</span> <span class="nb">dict</span><span class="o">.</span><span class="n">fromkeys</span><span class="p">(</span><span class="n">elAllList</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
@@ -14751,8 +14749,7 @@ var element = $('#442a0cf8-f7c2-4e4b-8a4d-c043034ddb67');
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[14]:</div>
-
+    
 
 
 <div class="output_html rendered_html output_subarea output_execute_result">
@@ -14898,10 +14895,14 @@ var element = $('#442a0cf8-f7c2-4e4b-8a4d-c043034ddb67');
 </div>
 </div>
 
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[15]:</div>
+  </div>
+
+  
+
+  <div class="
+      cell border-box-sizing code_cell rendered">
+    <div class="input">
+
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># typeDF.plot(x=&quot;Sum&quot;,y=&quot;Win Percentage&quot;,style=&#39;o&#39;)</span>
@@ -14919,8 +14920,7 @@ var element = $('#442a0cf8-f7c2-4e4b-8a4d-c043034ddb67');
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[15]:</div>
-
+    
 
 
 
@@ -14932,8 +14932,7 @@ var element = $('#442a0cf8-f7c2-4e4b-8a4d-c043034ddb67');
 
 <div class="output_area">
 
-    <div class="prompt"></div>
-
+    
 
 
 
@@ -14947,8 +14946,7 @@ var element = $('#442a0cf8-f7c2-4e4b-8a4d-c043034ddb67');
 
 <div class="output_area">
 
-    <div class="prompt"></div>
-
+    
 
 
 
@@ -14963,25 +14961,22 @@ var element = $('#442a0cf8-f7c2-4e4b-8a4d-c043034ddb67');
 </div>
 </div>
 
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+  </div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>The plot above shows the relation between the total elemental effectiveness of each Pokemon per type. As we can see, the plot points show the higher the elemental sum is for a pokemon of a certain type, the higher chance your pokemon has to win.</p>
 
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Going back to the optimal team from above, let us use this new data to find the winning percentage of a given team composition. To do that, we need to consider what stats we want to use based on how each stat correlates to the Winning Percentage.</p>
 
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>As we can see below, the Speed and Attack stat seems to make the best linear regression models. Defense is not the worst, however it does not look as sharp as the speed and attack stats, so we will not use defense in our prediction.</p>
 <p>Since we will not be using defense, we will also not being using the Sum to Win Percentage regression from above.</p>
@@ -14989,9 +14984,13 @@ var element = $('#442a0cf8-f7c2-4e4b-8a4d-c043034ddb67');
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[16]:</div>
+
+  
+
+  <div class="
+      cell border-box-sizing code_cell rendered">
+    <div class="input">
+
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">ax_3pairs</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">pairplot</span><span class="p">(</span><span class="n">pokeDF</span><span class="p">,</span> <span class="n">x_vars</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Speed&#39;</span><span class="p">,</span><span class="s1">&#39;Attack&#39;</span><span class="p">,</span><span class="s1">&#39;Defense&#39;</span><span class="p">],</span> <span class="n">y_vars</span><span class="o">=</span><span class="s1">&#39;Win Percentage&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span> <span class="n">aspect</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s1">&#39;reg&#39;</span><span class="p">)</span>
@@ -15008,8 +15007,7 @@ var element = $('#442a0cf8-f7c2-4e4b-8a4d-c043034ddb67');
 
 <div class="output_area">
 
-    <div class="prompt"></div>
-
+    
 
 <div class="output_subarea output_stream output_stderr output_text">
 <pre>/opt/conda/lib/python3.7/site-packages/seaborn/axisgrid.py:2065: UserWarning: The `size` parameter has been renamed to `height`; pleaes update your code.
@@ -15020,8 +15018,7 @@ var element = $('#442a0cf8-f7c2-4e4b-8a4d-c043034ddb67');
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[16]:</div>
-
+    
 
 
 
@@ -15033,8 +15030,7 @@ var element = $('#442a0cf8-f7c2-4e4b-8a4d-c043034ddb67');
 
 <div class="output_area">
 
-    <div class="prompt"></div>
-
+    
 
 
 
@@ -15049,18 +15045,21 @@ var element = $('#442a0cf8-f7c2-4e4b-8a4d-c043034ddb67');
 </div>
 </div>
 
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+  </div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Below, we compute the slope and intercept for the Speed and Attack linear regression equations.</p>
 
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[17]:</div>
+
+  
+
+  <div class="
+      cell border-box-sizing code_cell rendered">
+    <div class="input">
+
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">scipy</span>
@@ -15081,8 +15080,7 @@ var element = $('#442a0cf8-f7c2-4e4b-8a4d-c043034ddb67');
 
 <div class="output_area">
 
-    <div class="prompt"></div>
-
+    
 
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>0.008445397023413384 -0.06577521681567766
@@ -15094,18 +15092,21 @@ var element = $('#442a0cf8-f7c2-4e4b-8a4d-c043034ddb67');
 </div>
 </div>
 
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+  </div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Now that we have some way of predicting winning percentages for pokemon based on their stats, lets have a way to compute the winning percentages of a given pokemon team. The Team Winning percentage is based on the average winning percentage of the entire team.</p>
 
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[18]:</div>
+
+  
+
+  <div class="
+      cell border-box-sizing code_cell rendered">
+    <div class="input">
+
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">current_display</span> <span class="o">=</span> <span class="kc">False</span>
@@ -15183,129 +15184,92 @@ var element = $('#442a0cf8-f7c2-4e4b-8a4d-c043034ddb67');
 
 <div class="output_area">
 
-    <div class="prompt"></div>
+    
 
 
 
-
-
- 
- 
-<div id="a17e97d7-6824-40d4-a7cc-85e2f72ac70a"></div>
-<div class="output_subarea output_widget_view ">
-<script type="text/javascript">
-var element = $('#a17e97d7-6824-40d4-a7cc-85e2f72ac70a');
-</script>
-<script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "67a94c54094440da8cec6237b7a833f7", "version_major": 2, "version_minor": 0}
-</script>
-</div>
+  <div class="output_subarea output_widget_view ">
+    <button class="js-nbinteract-widget">
+      Loading widgets...
+    </button>
+  </div>
 
 </div>
 
 <div class="output_area">
 
-    <div class="prompt"></div>
+    
 
 
 
-
-
- 
- 
-<div id="347125d7-5de6-4e3f-abbc-32db6626ef62"></div>
-<div class="output_subarea output_widget_view ">
-<script type="text/javascript">
-var element = $('#347125d7-5de6-4e3f-abbc-32db6626ef62');
-</script>
-<script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "819f97ac15d049b79349c359a05645e3", "version_major": 2, "version_minor": 0}
-</script>
-</div>
+  <div class="output_subarea output_widget_view ">
+    <button class="js-nbinteract-widget">
+      Loading widgets...
+    </button>
+  </div>
 
 </div>
 
 <div class="output_area">
 
-    <div class="prompt"></div>
+    
 
 
 
-
-
- 
- 
-<div id="8082be91-e108-4915-9aa0-63a78594e778"></div>
-<div class="output_subarea output_widget_view ">
-<script type="text/javascript">
-var element = $('#8082be91-e108-4915-9aa0-63a78594e778');
-</script>
-<script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "98111cd93e9a430a9c42126a2f7c5d32", "version_major": 2, "version_minor": 0}
-</script>
-</div>
+  <div class="output_subarea output_widget_view ">
+    <button class="js-nbinteract-widget">
+      Loading widgets...
+    </button>
+  </div>
 
 </div>
 
 <div class="output_area">
 
-    <div class="prompt"></div>
+    
 
 
 
-
-
- 
- 
-<div id="57a7f9dd-e5a1-43f8-9bd2-71c8e4a39d6b"></div>
-<div class="output_subarea output_widget_view ">
-<script type="text/javascript">
-var element = $('#57a7f9dd-e5a1-43f8-9bd2-71c8e4a39d6b');
-</script>
-<script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "ceb7afdeeb0345d6bfc367118db78deb", "version_major": 2, "version_minor": 0}
-</script>
-</div>
+  <div class="output_subarea output_widget_view ">
+    <button class="js-nbinteract-widget">
+      Loading widgets...
+    </button>
+  </div>
 
 </div>
 
 <div class="output_area">
 
-    <div class="prompt"></div>
+    
 
 
 
-
-
- 
- 
-<div id="a26b5c57-7f49-4771-a58a-ab34c900a37e"></div>
-<div class="output_subarea output_widget_view ">
-<script type="text/javascript">
-var element = $('#a26b5c57-7f49-4771-a58a-ab34c900a37e');
-</script>
-<script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "aa97e0a251ef40f6980efcd07000597c", "version_major": 2, "version_minor": 0}
-</script>
-</div>
+  <div class="output_subarea output_widget_view ">
+    <button class="js-nbinteract-widget">
+      Loading widgets...
+    </button>
+  </div>
 
 </div>
 
 </div>
 </div>
 
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+  </div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Now that we have some method of predicting the probability of a team composition winning, lets see how our previously determined optimal team composition does against this prediction model.</p>
 
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[19]:</div>
+
+  
+
+  <div class="
+      cell border-box-sizing code_cell rendered">
+    <div class="input">
+
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">elList</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;normal&#39;</span><span class="p">,</span><span class="s1">&#39;fighting&#39;</span><span class="p">,</span><span class="s1">&#39;flying&#39;</span><span class="p">,</span><span class="s1">&#39;poison&#39;</span><span class="p">,</span><span class="s1">&#39;ground&#39;</span><span class="p">,</span><span class="s1">&#39;rock&#39;</span><span class="p">,</span><span class="s1">&#39;bug&#39;</span><span class="p">,</span><span class="s1">&#39;ghost&#39;</span><span class="p">,</span><span class="s1">&#39;steel&#39;</span><span class="p">,</span>
@@ -15337,8 +15301,7 @@ var element = $('#a26b5c57-7f49-4771-a58a-ab34c900a37e');
 
 <div class="output_area">
 
-    <div class="prompt"></div>
-
+    
 
 
 
@@ -15352,8 +15315,7 @@ var element = $('#a26b5c57-7f49-4771-a58a-ab34c900a37e');
 
 <div class="output_area">
 
-    <div class="prompt"></div>
-
+    
 
 
 
@@ -15368,16 +15330,14 @@ var element = $('#a26b5c57-7f49-4771-a58a-ab34c900a37e');
 </div>
 </div>
 
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+  </div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2><center>Conclusion and Insights</center></h2>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>After doing this project, I learned a lot about what it takes to design a battle system that cannot be exposed in video games. The game designers did a decent job on balancing out abilities, moves, and elemental power distribution across the 800+ Pokemon. Even after exploiting the correlation between speed and attack to winning percentage, I was only able to get my "most optimal team" winning percentage to about 2/3 of battles. Of course there are several other things that could be contributed into calculating a winning percentage per pokemon such as tactics, special stats, abilities, etc.. but this tutorial gave a decent insight on what pokemon features stand out the most.</p>
 <p>I love Pokemon, and I always have since I was a kid. I am so glad I was able to use my data science skills as a Pokemon Professor to find an optimal Pokemon team composition. If you are just a causual player, take advantage of the custom team composition calculator and see how well your team is able to counter all elemental types! This tutorial was a load of fun to make and I hope it has some uses to all Pokemon Trainers!</p>
@@ -15385,11 +15345,29 @@ var element = $('#a26b5c57-7f49-4771-a58a-ab34c900a37e');
 </div>
 </div>
 </div>
+
+
+
+<!-- Loads nbinteract package -->
+<script src="https://unpkg.com/nbinteract-core" async></script>
+<script>
+  (function setupNbinteract() {
+    // If NbInteract hasn't loaded, wait one second and try again
+    if (window.NbInteract === undefined) {
+      setTimeout(setupNbinteract, 1000)
+      return
+    }
+
+    var interact = new window.NbInteract({
+      spec: 'devantamot/nbinteract-image/master',
+      baseUrl: 'https://mybinder.org',
+      provider: 'gh',
+    })
+    interact.prepare()
+
+    window.interact = interact
+  })()
+</script>
     </div>
   </div>
 </body>
-
- 
-
-
-</html>
